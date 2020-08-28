@@ -3,29 +3,30 @@ import java.util.ArrayList;
 /* Samim Hakimi created on 8/26/20*/
 public class MerkleThread implements Runnable{
 
-    public static volatile ArrayList<String> lstWords;
+    public static volatile ArrayList<String> mListWords;
     private Util util = new Util();
 
 
     @Override
     public void run() {
         MerkleManager manager = new MerkleManager();
-        lstWords = new ArrayList<>();
+        mListWords = new ArrayList<>();
         while (true){
-            util.randomSleep("MerklThread sleeping, ");
-            String sNewWord = manager.grabWord();
+            util.randomSleep("Merkle Thread sleeping, ");
+            String mNewWord = manager.grabWord();
 
             //validating the user input
-            if (sNewWord != null){
+            if (mNewWord != null){
                 print("Merkle grabbed the word!" );
-                lstWords.add(sNewWord);
-                int iMerkleTreeInputs = 4;
-                if(lstWords.size() == iMerkleTreeInputs){
-                    MerkleManager.sMerkleRoot = util.getMerkleNode(lstWords);
+                mListWords.add(mNewWord);
+                int mMerkleTreeInputs = 4;
+                if(mListWords.size() == mMerkleTreeInputs){
+                    MerkleManager.mMerkleRoot = util.getMerkleNode(mListWords);
 
                 }
             }
-            util.printList(lstWords);
+            //words that merkle has grabbed
+            util.printList(mListWords);
 
         }
 

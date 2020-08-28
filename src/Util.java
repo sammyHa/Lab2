@@ -3,7 +3,6 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.SecureRandom;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /* Samim Hakimi created on 8/26/20*/
 public class Util {
@@ -21,10 +20,10 @@ public class Util {
 
 
         // leaves
-        node0.sHash = generateHash(list.get(0));
-        node1.sHash = generateHash(list.get(1));
-        node2.sHash = generateHash(list.get(2));
-        node3.sHash = generateHash(list.get(3));
+        node0.mHash = generateHash(list.get(0));
+        node1.mHash = generateHash(list.get(1));
+        node2.mHash = generateHash(list.get(2));
+        node3.mHash = generateHash(list.get(3));
 
         //child
         populateMerkleNode(node4, node0, node1 );
@@ -32,15 +31,15 @@ public class Util {
         //parent or root
         populateMerkleNode(node6, node4,node5 );
 //        print("root hash: " + node6.sHash);
-        return node6.sHash;
+        return node6.mHash;
 
 
     }
 
     private void populateMerkleNode(MerkleNode node, MerkleNode leftNode, MerkleNode rightNode) {
-        node.oLeft = leftNode;
-        node.oRight = rightNode;
-        node.sHash = generateHash(leftNode.sHash + rightNode.sHash);
+        node.mLeft = leftNode;
+        node.mRight = rightNode;
+        node.mHash = generateHash(leftNode.mHash + rightNode.mHash);
     }
 
     private synchronized String generateHash(String hash){
@@ -51,7 +50,7 @@ public class Util {
             return bytesToHex(mEncode);
 
         }catch (Exception e){
-            print("hash error " + e.getMessage());
+            print("hash error: " + e.getMessage());
             return null;
         }
     }
@@ -74,7 +73,7 @@ public class Util {
     public void randomSleep(String s){
         //get numbers between 0 and 5
         int mSleepTime = new SecureRandom().nextInt(5) + 3;
-        print(s + ", now sleeping for " + mSleepTime + " sec");
+        print(s + ", sleeping for " + mSleepTime + " sec");
         sleepTime(mSleepTime);
     }
 

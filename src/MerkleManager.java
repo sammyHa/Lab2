@@ -1,27 +1,25 @@
 /* Samim Hakimi created on 8/26/20*/
 
-import java.util.Scanner;
-
 public class MerkleManager {
     // init vars
     public static volatile String mUserEnteredWord;
-    public static String sEnteredExpectedRoot;
-    public static String sMerkleRoot = null;
-    public static int iStrikes = 0;
+    public static String mExpectedRoot;
+    public static String mMerkleRoot = null;
+    public static int mStrikes = 0;
 
     public static void manage(){
         // instantiate the Util class
         Util util = new Util();
 
-        //c. initiating the 3 threads
+        //c. init the 3 threads
         Thread merkleThread = new Thread(new MerkleThread());
         Thread rogueThread = new Thread(new RogueThread());
         Thread monitorThread = new Thread(new MonitorThread());
 
-        sEnteredExpectedRoot = util.promptUser("Enter the merkle root!: ");
+        mExpectedRoot = util.promptUser("Enter the merkle root!");
 
 
-        //starting all the above threads
+        //starting all the above 3 threads
         merkleThread.start();
         rogueThread.start();
         monitorThread.start();
@@ -29,8 +27,8 @@ public class MerkleManager {
 
         // runn the inifite loop
         while (true){
-            mUserEnteredWord = util.promptUser("Enter word: ");
-            util.print("user enterd words: " + mUserEnteredWord);
+            mUserEnteredWord = util.promptUser("Enter a word: ");
+//            util.print("user enterd words: " + mUserEnteredWord);
         }
 
     }

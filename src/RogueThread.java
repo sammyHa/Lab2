@@ -11,7 +11,7 @@ public class RogueThread implements Runnable{
                 String sNewWord = manager.grabWord();
                 if (sNewWord != null) {
                     Util.print("Rogue grabbed the word: STRIKE AGAIN!");
-                    MerkleManager.iStrikes++;
+                    MerkleManager.mStrikes++;
                 }
 
         }

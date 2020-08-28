@@ -5,20 +5,20 @@ public class MonitorThread implements Runnable{
     @Override
     public void run() {
         while (true){
-            if (MerkleManager.sMerkleRoot != null){
+            if (MerkleManager.mMerkleRoot != null){
 
-                if (MerkleManager.sMerkleRoot.equals(MerkleManager.mUserEnteredWord)){
+                if (MerkleManager.mMerkleRoot.equals(MerkleManager.mUserEnteredWord)){
 
-                    print("You win " + MerkleManager.sMerkleRoot);
+                    print("You win " + MerkleManager.mMerkleRoot);
                     System.exit(0);
                 }else{
-                    print("root: " + MerkleManager.sMerkleRoot);
+                    print("root: " + MerkleManager.mMerkleRoot);
                     print("user: " + MerkleManager.mUserEnteredWord);
 
                     print("The root does not match and you have lost!");
                     System.exit(0);
                 }
-            }else if(MerkleManager.iStrikes == 3){
+            }else if(MerkleManager.mStrikes == 3){
                 print("3 Strikes: you lost!");
                 System.exit(0);
             }
