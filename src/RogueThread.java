@@ -10,8 +10,8 @@ public class RogueThread implements Runnable{
                 util.randomSleep("Rogue Thread");
                 String sNewWord = manager.grabWord();
                 if (sNewWord != null) {
-                    Util.print("Rogue grabbed the word: STRIKE AGAIN!");
                     MerkleManager.mStrikes++;
+                    Util.print("Rogue grabbed the word: STRIKE AGAIN!");
                 }
 
         }

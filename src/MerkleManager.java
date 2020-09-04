@@ -25,7 +25,7 @@ public class MerkleManager {
         monitorThread.start();
 
 
-        // runn the inifite loop
+        // runn the inifinte loop
         while (true){
             mUserEnteredWord = util.promptUser("Enter a word: ");
 //            util.print("user enterd words: " + mUserEnteredWord);

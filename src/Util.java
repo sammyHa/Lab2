@@ -21,6 +21,7 @@ public class Util {
 
         // leaves
         node0.mHash = generateHash(list.get(0));
+
         node1.mHash = generateHash(list.get(1));
         node2.mHash = generateHash(list.get(2));
         node3.mHash = generateHash(list.get(3));
@@ -29,8 +30,8 @@ public class Util {
         populateMerkleNode(node4, node0, node1 );
         populateMerkleNode(node5, node2,node3 );
         //parent or root
-        populateMerkleNode(node6, node4,node5 );
-//        print("root hash: " + node6.sHash);
+        populateMerkleNode(node6, node4, node5 );
+        print("DEBUG: root hash: " + node6.mHash);
         return node6.mHash;
 
 
@@ -39,6 +40,7 @@ public class Util {
     private void populateMerkleNode(MerkleNode node, MerkleNode leftNode, MerkleNode rightNode) {
         node.mLeft = leftNode;
         node.mRight = rightNode;
+        //adding the two hashes and create the new next node
         node.mHash = generateHash(leftNode.mHash + rightNode.mHash);
     }
 
@@ -71,7 +73,7 @@ public class Util {
     }
 
     public void randomSleep(String s){
-        //get numbers between 0 and 5
+        //get numbers between 0 and 5 add 3
         int mSleepTime = new SecureRandom().nextInt(5) + 3;
         print(s + ", sleeping for " + mSleepTime + " sec");
         sleepTime(mSleepTime);
